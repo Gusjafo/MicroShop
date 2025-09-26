@@ -1,0 +1,12 @@
+# .gitattributes
+* text=auto eol=lf
+
+*.cs     diff=csharp
+*.sln    merge=union
+*.csproj merge=union
+*.props  merge=union
+*.targets merge=union
+
+# Keep line endings consistent on Windows tools too
+*.bat text eol=crlf
+*.ps1 text eol=crlf

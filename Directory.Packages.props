@@ -1,0 +1,9 @@
+<!-- Directory.Packages.props -->
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Central versions will be filled in future steps -->
+  </ItemGroup>
+</Project>

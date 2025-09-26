@@ -1,0 +1,38 @@
+# deploy/otel/otel-collector.yaml  (reemplaza el archivo completo)
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http:
+
+processors:
+  memory_limiter:
+    check_interval: 5s
+    limit_percentage: 75
+    spike_limit_percentage: 15
+  batch:
+
+exporters:
+  # Enviar trazas por OTLP gRPC a Jaeger (all-in-one escucha 4317 en la red del compose)
+  otlp:
+    endpoint: jaeger:4317
+    tls:
+      insecure: true
+  # Exponer métricas para Prometheus
+  prometheus:
+    endpoint: 0.0.0.0:8889
+
+extensions:
+  health_check:
+
+service:
+  extensions: [health_check]
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [otlp]
+    metrics:
+      receivers: [otlp]
+      processors: [memory_limiter, batch]
+      exporters: [prometheus]

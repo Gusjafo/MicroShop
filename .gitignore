@@ -1,0 +1,24 @@
+# .gitignore (conciso para .NET)
+# Build
+bin/
+obj/
+artifacts/
+
+# VS/VSCode
+.vs/
+.vscode/
+
+# User secrets
+**/secrets.json
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Tools
+.nuget/
+.nuke/
