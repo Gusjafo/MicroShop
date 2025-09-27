@@ -28,3 +28,7 @@ scripts/dev.sh down
 ```bash
 scripts/dev.sh logs
 ```
+
+## Troubleshooting
+
+- [Troubleshooting NuGet cache cleanup errors on Windows](docs/0003-troubleshooting-nuget-cache.md)
