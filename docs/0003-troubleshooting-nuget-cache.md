@@ -55,4 +55,4 @@ Remove-Item -Recurse -Force "$env:USERPROFILE\.nuget\packages\microsoft.sourceli
 Remove-Item -Recurse -Force "$env:USERPROFILE\.nuget\packages\microsoft.sourcelink.github"
 ```
 
-After removing the locked folders, rerun `dotnet nuget locals all --clear` to ensure the cache is fully cleared.
+After removing the locked folders, rerun `dotnet nuget locals all --clear` to ensure the cache is fully cleared. 
