@@ -7,10 +7,10 @@ using Xunit;
 /// </summary>
 public class ResultTests
 {
-  [Fact]
   /// <summary>
   /// Ensures a successful result exposes the provided value and no error details.
   /// </summary>
+  [Fact]
   public void Ok_ShouldCarryValue()
   {
     var r = Result<int>.Ok(42);
@@ -19,10 +19,10 @@ public class ResultTests
     _ = r.Error.Should().Be(Error.None);
   }
 
-  [Fact]
   /// <summary>
   /// Ensures a failed result exposes the provided error information.
   /// </summary>
+  [Fact]
   public void Fail_ShouldCarryError()
   {
     var r = Result<int>.Fail("E.TEST", "failed");
