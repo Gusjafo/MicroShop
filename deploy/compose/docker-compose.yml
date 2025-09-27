@@ -98,6 +98,30 @@ services:
     volumes:
       - seq-data:/data
 
+  identity-api:
+    build:
+      context: ../..
+      dockerfile: src/Services/Identity/API/Dockerfile
+    container_name: microshop-identity
+    depends_on:
+      - sqlserver
+      - rabbitmq
+    environment:
+      - ASPNETCORE_URLS=http://+:8080
+      - ConnectionStrings__IdentityDb=Server=sqlserver,1433;Database=IdentityDb;User Id=sa;Password=${MSSQL_SA_PASSWORD};TrustServerCertificate=true
+      - Jwt__Issuer=MicroShop.Identity
+      - Jwt__Audience=MicroShop.Gateway
+      - Jwt__ExpiresMinutes=60
+      - Messaging__RabbitMq__Host=rabbitmq
+      - Messaging__RabbitMq__Username=guest
+      - Messaging__RabbitMq__Password=guest
+      - Serilog__WriteTo__0__Name=Seq
+      - Serilog__WriteTo__0__Args__serverUrl=http://seq:5341
+    ports:
+      - "5001:8080"
+    volumes:
+      - ./identity-secrets:/app/identity-secrets:ro
+
 volumes:
   mssql-data:
   seq-data:
