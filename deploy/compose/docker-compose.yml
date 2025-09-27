@@ -98,6 +98,33 @@ services:
     volumes:
       - seq-data:/data
 
+  identity-api:
+    build:
+      context: ../..
+      dockerfile: src/Services/Identity/API/Dockerfile
+    container_name: microshop-identity-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__Identity=Server=sqlserver;Database=MicroShop_Identity;User Id=sa;Password=${MSSQL_SA_PASSWORD};TrustServerCertificate=True;
+      - Jwt__Issuer=MicroShop.Identity
+      - Jwt__Audience=MicroShop
+      - Jwt__PrivateKeyPath=/app/secrets/identity_rsa_private.pem
+      - Jwt__PublicKeyPath=/app/secrets/identity_rsa_public.pem
+      - RabbitMQ__Host=rabbitmq
+      - RabbitMQ__Username=guest
+      - RabbitMQ__Password=guest
+      - DOTNET_ENVIRONMENT=Development
+    ports:
+      - "5001:8080"
+    volumes:
+      - identity-secrets:/app/secrets
+    depends_on:
+      - sqlserver
+      - rabbitmq
+      - otel-collector
+      - seq
+
 volumes:
   mssql-data:
   seq-data:
+  identity-secrets:
