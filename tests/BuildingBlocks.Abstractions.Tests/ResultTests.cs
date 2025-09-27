@@ -2,9 +2,15 @@ using FluentAssertions;
 using MicroShop.BuildingBlocks.Abstractions.Common;
 using Xunit;
 
+/// <summary>
+/// Contains unit tests that validate the <see cref="Result{T}"/> helper type.
+/// </summary>
 public class ResultTests
 {
   [Fact]
+  /// <summary>
+  /// Ensures a successful result exposes the provided value and no error details.
+  /// </summary>
   public void Ok_ShouldCarryValue()
   {
     var r = Result<int>.Ok(42);
@@ -14,6 +20,9 @@ public class ResultTests
   }
 
   [Fact]
+  /// <summary>
+  /// Ensures a failed result exposes the provided error information.
+  /// </summary>
   public void Fail_ShouldCarryError()
   {
     var r = Result<int>.Fail("E.TEST", "failed");
