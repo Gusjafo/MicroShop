@@ -3,7 +3,7 @@ namespace MicroShop.BuildingBlocks.Contracts.Messaging.Sample
   /// <summary>
   /// Represents the integration event emitted when a catalog product price changes.
   /// </summary>
-  public sealed record Catalog_ProductPriceChanged_V1 : Messaging.IIntegrationEvent
+  public sealed record Catalog_ProductPriceChanged_V1 : IIntegrationEvent
   {
     /// <summary>
     /// Initializes a new instance of the <see cref="Catalog_ProductPriceChanged_V1"/> record.
@@ -14,10 +14,10 @@ namespace MicroShop.BuildingBlocks.Contracts.Messaging.Sample
     /// <param name="currency">The ISO currency code of the prices.</param>
     public Catalog_ProductPriceChanged_V1(Guid productId, decimal oldPrice, decimal newPrice, string currency)
     {
-      ProductId = productId;
-      OldPrice = oldPrice;
-      NewPrice = newPrice;
-      Currency = currency;
+      this.ProductId = productId;
+      this.OldPrice = oldPrice;
+      this.NewPrice = newPrice;
+      this.Currency = currency;
     }
 
     /// <summary>

@@ -8,7 +8,7 @@ namespace MicroShop.BuildingBlocks.Contracts.Messaging
     /// <summary>
     /// Gets the event name that uniquely identifies the integration event instance.
     /// </summary>
-    string MessageName => GetType().Name;
+    string MessageName => this.GetType().Name;
 
     /// <summary>
     /// Gets the semantic version of the integration event definition.

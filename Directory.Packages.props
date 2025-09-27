@@ -4,6 +4,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- Infra tooling -->
+    <PackageVersion Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
     <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0" />
     <!-- Building blocks deps -->

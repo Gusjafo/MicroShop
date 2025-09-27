@@ -20,11 +20,11 @@ namespace MicroShop.BuildingBlocks.Contracts.Messaging
         DateTimeOffset occurredOnUtc,
         string version)
     {
-      MessageId = messageId;
-      CorrelationId = correlationId;
-      CausationId = causationId;
-      OccurredOnUtc = occurredOnUtc;
-      Version = version;
+      this.MessageId = messageId;
+      this.CorrelationId = correlationId;
+      this.CausationId = causationId;
+      this.OccurredOnUtc = occurredOnUtc;
+      this.Version = version;
     }
 
     /// <summary>

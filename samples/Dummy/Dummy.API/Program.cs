@@ -26,12 +26,12 @@ app.MapPost("/demo/price-change", async (
     IIdGenerator ids,
     ICorrelationContextAccessor corr) =>
 {
-  var meta = new MicroShop.BuildingBlocks.Contracts.Messaging.MessageMetadata(
-      MessageId: ids.NewId(),
-      CorrelationId: corr.Current.CorrelationId,
-      CausationId: corr.Current.CausationId,
-      OccurredOnUtc: clock.UtcNow,
-      Version: "1");
+  var meta = new MessageMetadata(
+      messageId: ids.NewId(),
+      correlationId: corr.Current.CorrelationId,
+      causationId: corr.Current.CausationId,
+      occurredOnUtc: clock.UtcNow,
+      version: "1");
 
   using var _ = Tracing.StartActivity("Publish PriceChanged");
   await bus.PublishAsync(new MessageEnvelope<Catalog_ProductPriceChanged_V1>(body, meta));

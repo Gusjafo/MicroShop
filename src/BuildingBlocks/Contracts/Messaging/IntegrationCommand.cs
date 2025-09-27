@@ -8,7 +8,7 @@ namespace MicroShop.BuildingBlocks.Contracts.Messaging
     /// <summary>
     /// Gets the command name that uniquely identifies the integration command instance.
     /// </summary>
-    string CommandName => GetType().Name;
+    string CommandName => this.GetType().Name;
 
     /// <summary>
     /// Gets the semantic version of the integration command definition.

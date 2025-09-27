@@ -7,12 +7,19 @@ namespace MicroShop.BuildingBlocks.Abstractions.Common
 
     protected Result(bool isSuccess, Error error)
     {
-      IsSuccess = isSuccess;
-      Error = error;
+      this.IsSuccess = isSuccess;
+      this.Error = error;
     }
 
-    public static Result Ok() => new(true, Error.None);
-    public static Result Fail(string code, string message) => new(false, new Error(code, message));
+    public static Result Ok()
+    {
+      return new(true, Error.None);
+    }
+
+    public static Result Fail(string code, string message)
+    {
+      return new(false, new Error(code, message));
+    }
   }
 
   public sealed class Result<T> : Result
@@ -20,9 +27,18 @@ namespace MicroShop.BuildingBlocks.Abstractions.Common
     public T? Value { get; }
 
     private Result(bool isSuccess, T? value, Error error) : base(isSuccess, error)
-        => Value = value;
+    {
+      this.Value = value;
+    }
 
-    public static Result<T> Ok(T value) => new(true, value, Error.None);
-    public static new Result<T> Fail(string code, string message) => new(false, default, new Error(code, message));
+    public static Result<T> Ok(T value)
+    {
+      return new(true, value, Error.None);
+    }
+
+    public static new Result<T> Fail(string code, string message)
+    {
+      return new(false, default, new Error(code, message));
+    }
   }
 }

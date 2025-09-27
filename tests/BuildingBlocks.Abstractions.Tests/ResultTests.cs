@@ -8,16 +8,16 @@ public class ResultTests
   public void Ok_ShouldCarryValue()
   {
     var r = Result<int>.Ok(42);
-    r.IsSuccess.Should().BeTrue();
-    r.Value.Should().Be(42);
-    r.Error.Should().Be(Error.None);
+    _ = r.IsSuccess.Should().BeTrue();
+    _ = r.Value.Should().Be(42);
+    _ = r.Error.Should().Be(Error.None);
   }
 
   [Fact]
   public void Fail_ShouldCarryError()
   {
     var r = Result<int>.Fail("E.TEST", "failed");
-    r.IsSuccess.Should().BeFalse();
-    r.Error.Code.Should().Be("E.TEST");
+    _ = r.IsSuccess.Should().BeFalse();
+    _ = r.Error.Code.Should().Be("E.TEST");
   }
 }
