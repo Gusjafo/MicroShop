@@ -8,6 +8,7 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\BuildingBlocks\Abstractions\MicroShop.BuildingBlocks.Abstractions.csproj" />
+    <PackageReference Include="Newtonsoft.Json" />
     <PackageReference Include="xunit" />
     <PackageReference Include="xunit.runner.visualstudio" />
     <PackageReference Include="FluentAssertions" />
