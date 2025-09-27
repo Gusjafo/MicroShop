@@ -6,7 +6,7 @@
     <!-- Infra tooling -->
     <PackageVersion Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
     <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" />
-    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="9.0.0" />
     <!-- Building blocks deps -->
     <PackageVersion Include="NUlid" Version="1.7.3" />
     <PackageVersion Include="OpenTelemetry" Version="1.9.0" />
