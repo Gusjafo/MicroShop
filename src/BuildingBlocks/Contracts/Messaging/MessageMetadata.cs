@@ -1,5 +1,3 @@
-using System;
-
 namespace MicroShop.BuildingBlocks.Contracts.Messaging
 {
   /// <summary>
