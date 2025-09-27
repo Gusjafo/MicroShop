@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="9.0.0" />
+    <PackageReference Include="xunit" Version="2.9.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.8.1" />
+    <PackageReference Include="FluentAssertions" Version="6.12.0" />
+    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <PackageReference Include="Testcontainers" Version="3.9.0" />
+    <PackageReference Include="Testcontainers.SqlEdge" Version="3.9.0" />
+    <PackageReference Include="Testcontainers.RabbitMq" Version="3.9.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/Services/Identity/Application/MicroShop.Services.Identity.Application.csproj" />
+    <ProjectReference Include="../../src/Services/Identity/API/MicroShop.Services.Identity.API.csproj" />
+    <ProjectReference Include="../../src/Services/Identity/Infrastructure/MicroShop.Services.Identity.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>
