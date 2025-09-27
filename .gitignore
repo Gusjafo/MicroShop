@@ -20,5 +20,7 @@ logs/
 Thumbs.db
 
 # Tools
-.nuget/
+.nuget/*
+!.nuget/feed/
+!.nuget/feed/README.md
 .nuke/
