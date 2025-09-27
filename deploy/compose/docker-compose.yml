@@ -12,6 +12,36 @@ services:
     volumes:
       - mssql-data:/var/opt/mssql
 
+  identity-api:
+    build:
+      context: ../..
+      dockerfile: src/Services/Identity/Identity.API/Dockerfile
+    image: microshop-identity-api
+    container_name: microshop-identity-api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - SqlServer__ConnectionString=Server=sqlserver,1433;Database=MicroShopIdentity;User Id=sa;Password=${MSSQL_SA_PASSWORD};TrustServerCertificate=True
+      - RabbitMq__Host=rabbitmq
+      - RabbitMq__Port=5672
+      - RabbitMq__Username=guest
+      - RabbitMq__Password=guest
+      - Jwt__Issuer=${IDENTITY_JWT_ISSUER:-microshop-identity}
+      - Jwt__Audience=${IDENTITY_JWT_AUDIENCE:-microshop-clients}
+      - Jwt__Algorithm=RS256
+      - Jwt__PrivateKeyPem=${IDENTITY_JWT_PRIVATE_KEY}
+      - Jwt__PublicKeyPem=${IDENTITY_JWT_PUBLIC_KEY}
+      - Serilog__WriteTo__0__Name=Seq
+      - Serilog__WriteTo__0__Args__serverUrl=http://seq:5341
+      - Serilog__MinimumLevel=Information
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+    ports:
+      - "8080:8080"
+    depends_on:
+      - sqlserver
+      - rabbitmq
+      - otel-collector
+      - seq
+
   rabbitmq:
     image: rabbitmq:3.13-management
     container_name: microshop-rabbit
